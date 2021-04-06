@@ -20,8 +20,8 @@ namespace Snake
         /// </summary>
         public Board()
         {
-            Height = 20; // Should be even
-            Width = 50; // Should be even
+            Height = 20;
+            Width = 50;
             Console.SetWindowSize(Width, Height);
             Console.CursorVisible = false;
             Console.ForegroundColor = ForeGroundColor;

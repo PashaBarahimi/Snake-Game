@@ -66,8 +66,9 @@ namespace Snake
         /// This function starts the game
         /// </summary>
         /// <param name="delay">Delay value returned from <see cref="ChooseLevel"/></param>
+        /// /// <param name="score">User's score after losing the game</param>
         /// <returns>The game status which is whether won or lost. See also <seealso cref="GameStatus"/></returns>
-        static GameStatus Snake(int delay)
+        static GameStatus Snake(int delay, out int score)
         {
             // Few requirements before the game starts
             Board gameBoard = new Board();
@@ -85,7 +86,11 @@ namespace Snake
                 {
                     GameStatus status = SnakePart.SnakeMove(head, snakeParts, tail, gameBoard, headDirection);
                     if (status != GameStatus.StillPlaying)
+                    {
+                        score = snakeParts.Count - 1;
                         return status; // The game status is whether won or lost
+                    }
+
                     Thread.Sleep(delay);
                 } while (!Console.KeyAvailable); // Checks if the user wants to change the direction
 
@@ -137,14 +142,14 @@ namespace Snake
                 int delay = ChooseLevel();
                 Console.Clear();
                 Loading();
-                GameStatus status = Snake(delay);
+                GameStatus status = Snake(delay, out int score);
                 MainBoard();
                 switch (status) // This part executes when the game ends
                 {
                     case GameStatus.Lost:
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.Beep(750, 500);
-                        Console.WriteLine("Oops you lost!");
+                        Console.WriteLine($"Oops you lost! Your score : {score}");
                         break;
                     case GameStatus.Won:
                         Console.ForegroundColor = ConsoleColor.Green;
