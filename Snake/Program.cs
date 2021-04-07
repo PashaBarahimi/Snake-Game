@@ -158,9 +158,23 @@ namespace Snake
                     default:
                         return; // Just to remove warning
                 }
-                Console.WriteLine("If you want to exit press escape. Otherwise, press any other key.");
-                if (Console.ReadKey(true).Key == ConsoleKey.Escape) // Checking whether the user wants to exit the game or replay
-                    return;
+                Console.WriteLine("If you want to exit press escape. Otherwise, press enter.");
+                while (true)
+                {
+                    bool replay = false;
+                    switch (Console.ReadKey(true).Key)
+                    {
+                        case ConsoleKey.Escape: // Checking whether the user wants to exit the game or replay
+                            return;
+                        case ConsoleKey.Enter:
+                            replay = true;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (replay)
+                        break;
+                }
             }
         }
         #endregion
