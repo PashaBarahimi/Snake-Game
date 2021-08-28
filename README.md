@@ -28,4 +28,4 @@ If the snake eats a fruit(the red pixel), it will grow up. Also if the snake's h
 
 ## License
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/PashaBarahimi/DoodleJump/blob/master/LICENSE "License")
+[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/PashaBarahimi/SnakeGame/blob/master/LICENSE "License")
